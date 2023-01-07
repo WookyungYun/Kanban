@@ -13,7 +13,6 @@ export const columnsState = atom({
       items: [
         { id: "1", content: "공부하기" },
         { id: "2", content: "cd" },
-        { id: "3", content: "" },
       ],
     },
     {

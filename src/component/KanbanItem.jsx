@@ -1,5 +1,5 @@
 import { Draggable } from "react-beautiful-dnd";
-
+import ContentEditable from "react-contenteditable";
 export default function KanbanItem({ item, index }) {
   return (
     <>
@@ -11,7 +11,7 @@ export default function KanbanItem({ item, index }) {
             {...provided.draggableProps}
             {...provided.dragHandleProps}
           >
-            <input placeholder={item.content} />
+            <ContentEditable html={item.content} disabled={false} />
           </div>
         )}
       </Draggable>

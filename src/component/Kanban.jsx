@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { columnsState } from "../store/kanban";
 import AddColumnBtn from "./AddColumnBtn";
@@ -13,7 +12,7 @@ const ListGrid = styled.div`
 `;
 
 export default function Kanban() {
-  const [columns, setColumns] = useRecoilState(columnsState);
+  const columns = useRecoilValue(columnsState);
 
   const onDragEnd = (res) => {
     console.log("목표드래그");
@@ -22,7 +21,7 @@ export default function Kanban() {
   return (
     <>
       <DragDropContext onDragEnd={onDragEnd}>
-        <div>This is Kanban</div>
+        <h1>This is Kanban</h1>
         <ListGrid>
           {Object.entries(columns).map(([columnId, column], index) => (
             <div key={columnId}>
