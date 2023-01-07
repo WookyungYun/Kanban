@@ -24,12 +24,11 @@ export default function Kanban() {
       <DragDropContext onDragEnd={onDragEnd}>
         <div>This is Kanban</div>
         <ListGrid>
-          {Object.entries(columns).map(([columnId, column]) => (
+          {Object.entries(columns).map(([columnId, column], index) => (
             <div key={columnId}>
-              <KanbanColumn column={column} />
+              <KanbanColumn column={column} index={index} />
             </div>
           ))}
-
           <AddColumnBtn />
         </ListGrid>
       </DragDropContext>

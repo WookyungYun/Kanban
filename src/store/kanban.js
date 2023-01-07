@@ -1,17 +1,20 @@
 import { atom } from "recoil";
 
-const ItemList = [
-  { id: "1", content: "공부하기" },
-  { id: "2", content: "운동하기" },
-  { id: "3", content: "숙제하기" },
-];
+export const itemListState = atom({
+  key: "itemListState",
+  default: [{ id: "1", content: "공부하기" }],
+});
 
 export const columnsState = atom({
-  key: "columns",
+  key: "columnsState",
   default: [
     {
       title: "todo",
-      items: ItemList,
+      items: [
+        { id: "1", content: "공부하기" },
+        { id: "2", content: "cd" },
+        { id: "3", content: "" },
+      ],
     },
     {
       title: "in progress",

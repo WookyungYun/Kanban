@@ -2,7 +2,7 @@ import { Droppable } from "react-beautiful-dnd";
 import AddItemBtn from "./AddItemBtn";
 import KanbanItem from "./KanbanItem";
 
-export default function KanbanColumn({ key, column }) {
+export default function KanbanColumn({ key, column, index }) {
   console.log(
     column.items.map((item) => console.log(item)),
     "item"
@@ -23,7 +23,7 @@ export default function KanbanColumn({ key, column }) {
             </>
           )}
         </Droppable>
-        <AddItemBtn />
+        <AddItemBtn element={column} index={index} />
       </div>
     </>
   );
