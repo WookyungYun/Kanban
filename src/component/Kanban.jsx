@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import { columnsState } from "../store/kanban";
 import AddColumnBtn from "./AddColumnBtn";
 import KanbanColumn from "./KanbanColumn";
 
@@ -9,28 +11,9 @@ const ListGrid = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 8px;
 `;
-const ItemList = [
-  { id: "1", content: "공부하기" },
-  { id: "2", content: "운동하기" },
-  { id: "3", content: "숙제하기" },
-];
-const ColumnList = [
-  {
-    title: "todo",
-    items: ItemList,
-  },
-  {
-    title: "in progress",
-    items: [],
-  },
-  {
-    title: "done",
-    items: [],
-  },
-];
 
 export default function Kanban() {
-  const [columns, setColumns] = useState(ColumnList);
+  const [columns, setColumns] = useRecoilState(columnsState);
 
   const onDragEnd = (res) => {
     console.log("목표드래그");
