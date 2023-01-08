@@ -3,6 +3,7 @@ import ContentEditable from "react-contenteditable";
 import { useSetRecoilState } from "recoil";
 import { columnsState } from "../store/kanban";
 import { deepCopy } from "../utils/object";
+import DeleteBtn from "./DeleteBtn";
 
 export default function KanbanItem({ item, columnIndex, itemIndex }) {
   const setColumns = useSetRecoilState(columnsState);
@@ -26,10 +27,12 @@ export default function KanbanItem({ item, columnIndex, itemIndex }) {
             {...provided.dragHandleProps}
           >
             <ContentEditable
+              style={{ color: "red", width: "70px" }}
               html={item.content}
               disabled={false}
               onChange={handleChange}
             />
+            <DeleteBtn columnIndex={columnIndex} itemId={item.id} />
           </div>
         )}
       </Draggable>

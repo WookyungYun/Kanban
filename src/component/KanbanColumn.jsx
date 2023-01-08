@@ -2,7 +2,6 @@ import { Droppable } from "react-beautiful-dnd";
 import AddItemBtn from "./AddItemBtn";
 import KanbanItem from "./KanbanItem";
 import ContentEditable from "react-contenteditable";
-import DeleteBtn from "./DeleteBtn";
 
 export default function KanbanColumn({ column, index }) {
   return (
@@ -22,7 +21,6 @@ export default function KanbanColumn({ column, index }) {
                       columnIndex={index}
                       itemIndex={idx}
                     />
-                    <DeleteBtn columnIndex={index} itemId={item.id} />
                   </div>
                 ))}
                 {provided.placeholder}
