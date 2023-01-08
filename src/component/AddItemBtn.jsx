@@ -22,7 +22,7 @@ export default function AddItemBtn({ index }) {
       setColumns((columns) => {
         const nextState = produce(columns, (draft) => {
           const items = draft[index].items;
-          items.push({ id: `${items.length + 1}`, content: `${text.current}` });
+          items.push({ id: items.length + 1, content: `${text.current}` });
         });
         return nextState;
       });
