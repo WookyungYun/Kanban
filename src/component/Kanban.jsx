@@ -13,7 +13,7 @@ const ListGrid = styled.div`
 
 export default function Kanban() {
   const columns = useRecoilValue(columnsState);
-
+  console.log(columns, "columns");
   const onDragEnd = (res) => {
     console.log("목표드래그");
     console.log("res", res);
