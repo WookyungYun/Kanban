@@ -10,7 +10,7 @@ export default function KanbanColumn({ column, index }) {
         <strong>
           <ContentEditable html={column.title} disabled={false} />
         </strong>
-        <Droppable droppableId={column.title}>
+        <Droppable droppableId={`${index}`} index={index}>
           {(provided) => (
             <>
               <div ref={provided.innerRef} {...provided.droppableProps}>

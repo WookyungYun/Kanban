@@ -8,7 +8,6 @@ import DeleteBtn from "./DeleteBtn";
 export default function KanbanItem({ item, columnIndex, itemIndex }) {
   const setColumns = useSetRecoilState(columnsState);
   const handleChange = (e) => {
-    console.log(e.target.value);
     setColumns((columns) => {
       const clone = deepCopy(columns);
       clone[columnIndex].items[itemIndex].content = e.target.value;
@@ -18,7 +17,11 @@ export default function KanbanItem({ item, columnIndex, itemIndex }) {
 
   return (
     <>
-      <Draggable key={item.id} draggableId={`${item.id}`} index={item.id}>
+      <Draggable
+        key={item.id}
+        draggableId={`${item.content}`}
+        index={itemIndex}
+      >
         {(provided, snapshot) => (
           <div
             ref={provided.innerRef}
