@@ -2,6 +2,7 @@ import { Droppable } from "react-beautiful-dnd";
 import AddItemBtn from "./AddItemBtn";
 import KanbanItem from "./KanbanItem";
 import ContentEditable from "react-contenteditable";
+import DeleteColumnBtn from "./DeleteColumnBtn";
 
 export default function KanbanColumn({ column, index }) {
   return (
@@ -9,6 +10,7 @@ export default function KanbanColumn({ column, index }) {
       <div>
         <strong>
           <ContentEditable html={column.title} disabled={false} />
+          <DeleteColumnBtn parentColumn={column} index={index} />
         </strong>
         <Droppable droppableId={`${index}`} index={index}>
           {(provided) => (

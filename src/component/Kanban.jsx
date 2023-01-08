@@ -32,7 +32,7 @@ export default function Kanban() {
         <ListGrid>
           {Object.entries(columns).map(([columnId, column], index) => (
             <div key={columnId}>
-              <KanbanColumn column={column} index={index} />
+              <KanbanColumn column={column} index={index} columnId={columnId} />
             </div>
           ))}
           <AddColumnBtn />
