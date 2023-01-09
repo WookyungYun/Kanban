@@ -6,10 +6,13 @@ import ContentEditable from "react-contenteditable";
 
 export default function AddItemBtn({ index }) {
   const [open, setOpen] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
   const text = useRef("");
   const setColumns = useSetRecoilState(columnsState);
   const onChange = (e) => {
     text.current = e.target.value;
+    setIsDisabled(false);
+    if (e.target.value === "") setIsDisabled(true);
   };
 
   const openInput = () => {
@@ -27,8 +30,7 @@ export default function AddItemBtn({ index }) {
         return nextState;
       });
       text.current = "";
-    } else {
-      alert("내용을 입력하세요");
+      setIsDisabled(true);
     }
   };
 
@@ -42,7 +44,10 @@ export default function AddItemBtn({ index }) {
             disabled={false}
           />
           <div>
-            <button onClick={addCard}> Add Card</button>
+            <button onClick={addCard} disabled={isDisabled}>
+              {" "}
+              Add Card
+            </button>
           </div>
         </div>
       ) : (
