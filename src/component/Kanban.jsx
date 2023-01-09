@@ -16,7 +16,6 @@ export default function Kanban() {
   const [columns, setColumns] = useRecoilState(columnsState);
   console.log(columns, "columns");
   const onDragEnd = ({ destination, source, draggableId }) => {
-    console.log(destination, source, draggableId);
     if (!destination) return;
 
     const clone = deepCopy(columns);
