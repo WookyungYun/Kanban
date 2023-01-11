@@ -6,7 +6,7 @@ import ContentEditable from "react-contenteditable";
 import { InputDiv } from "../style/itemStyle";
 import { AddCardButton, Button } from "../style/buttonStyle";
 
-export default function AddItemBtn({ index }) {
+export default function AddItemBtn({ index, isDisabled }) {
   const [open, setOpen] = useState(false);
   const text = useRef("");
   const setColumns = useSetRecoilState(columnsState);
@@ -46,7 +46,13 @@ export default function AddItemBtn({ index }) {
           <AddCardButton onClick={handleClickAddCard}> Add Card</AddCardButton>
         </>
       ) : (
-        <Button onClick={openInput}>+ Add a card</Button>
+        <Button
+          className={isDisabled ? "button-disabled" : ""}
+          onClick={openInput}
+          disabled={isDisabled}
+        >
+          + Add a card
+        </Button>
       )}
     </>
   );

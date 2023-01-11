@@ -20,10 +20,7 @@ export const columnsState = atom({
   default: [
     {
       title: "todo",
-      items: [
-        { id: 1, content: "공부하기" },
-        { id: 2, content: "cd" },
-      ],
+      items: [{ id: 1, content: "공부하기" }],
     },
     {
       title: "in progress",

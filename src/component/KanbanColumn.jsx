@@ -7,16 +7,20 @@ import { useRecoilState } from "recoil";
 import { columnsState } from "../store/kanban";
 import { deepCopy } from "../utils/object";
 import { Container, ItemsContainer, Title } from "../style/columnStyle";
+import { useState } from "react";
 
 export default function KanbanColumn({ column, index, columnId }) {
   const [columns, setColumns] = useRecoilState(columnsState);
+  const [isDisabled, setIsDisabled] = useState(column.title ? false : true);
   const handleChange = (e) => {
     const clone = deepCopy(columns);
     if (e.target.value !== "") {
       clone[index].title = e.target.value;
       setColumns(clone);
+      setIsDisabled(false);
     } else {
-      alert("제목을 입력해주세요.");
+      setIsDisabled(true);
+      alert("제목을 입력하지 않으면 정상적으로 추가되지 않습니다.");
     }
   };
 
@@ -68,7 +72,7 @@ export default function KanbanColumn({ column, index, columnId }) {
               </>
             )}
           </Droppable>
-          <AddItemBtn index={index} />
+          <AddItemBtn index={index} isDisabled={isDisabled} />
         </Container>
       )}
     </Draggable>

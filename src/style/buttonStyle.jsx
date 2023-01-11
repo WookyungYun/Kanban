@@ -9,6 +9,10 @@ export const Button = styled.button`
   cursor: pointer;
   font-weight: 700;
   margin-top: 10px;
+  &.button-disabled {
+    background: lightgray;
+    border: 1px solid lightgray;
+  }
 `;
 
 export const AddCardButton = styled.button`
