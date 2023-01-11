@@ -30,7 +30,6 @@ export default function Kanban() {
     if (type === "column") {
       const clone = deepCopy(columns);
       const from = clone[source.index];
-      console.log(from, "columns from");
       clone.splice(source.index, 1);
       clone.splice(destination.index, 0, from);
       setColumns(clone);
@@ -39,7 +38,6 @@ export default function Kanban() {
   return (
     <>
       <DragDropContext onDragEnd={onDragEnd}>
-        <h1>This is Kanban</h1>
         <Droppable
           droppableId="all-column"
           type="column"

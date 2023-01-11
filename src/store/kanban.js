@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
 export const columnsState = atom({
-  key: "columnsState",
+  key: "columnState",
   default: [
     {
       title: "todo",
