@@ -2,6 +2,7 @@ import { Draggable } from "react-beautiful-dnd";
 import ContentEditable from "react-contenteditable";
 import { useSetRecoilState } from "recoil";
 import { columnsState } from "../store/kanban";
+import { ItemDiv } from "../style/itemStyle";
 import { deepCopy } from "../utils/object";
 import DeleteBtn from "./DeleteBtn";
 
@@ -24,20 +25,19 @@ export default function KanbanItem({ item, columnIndex, itemIndex }) {
         type="task"
       >
         {(provided, snapshot) => (
-          <div
+          <ItemDiv
             ref={provided.innerRef}
             snapshot={snapshot}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
           >
             <ContentEditable
-              style={{ color: "red", width: "70px" }}
               html={item.content}
               disabled={false}
               onChange={handleChange}
             />
             <DeleteBtn columnIndex={columnIndex} itemId={item.id} />
-          </div>
+          </ItemDiv>
         )}
       </Draggable>
     </>

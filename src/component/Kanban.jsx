@@ -1,17 +1,10 @@
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { useRecoilState } from "recoil";
-import styled from "styled-components";
 import { columnsState } from "../store/kanban";
+import { ListGrid } from "../style/columnStyle";
 import { deepCopy } from "../utils/object";
 import AddColumnBtn from "./AddColumnBtn";
 import KanbanColumn from "./KanbanColumn";
-
-const ListGrid = styled.div`
-  display: flex;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 20px;
-  border: 1px solid red;
-`;
 
 export default function Kanban() {
   const [columns, setColumns] = useRecoilState(columnsState);
@@ -44,21 +37,23 @@ export default function Kanban() {
           direction="horizontal"
         >
           {(provided) => (
-            <ListGrid {...provided.droppableProps} ref={provided.innerRef}>
-              {Object.entries(columns).map(([columnId, column], index) => (
-                <div key={columnId}>
-                  <KanbanColumn
-                    column={column}
-                    index={index}
-                    columnId={columnId}
-                  />
-                </div>
-              ))}
-              {provided.placeholder}
-            </ListGrid>
+            <>
+              <ListGrid {...provided.droppableProps} ref={provided.innerRef}>
+                {Object.entries(columns).map(([columnId, column], index) => (
+                  <div key={columnId}>
+                    <KanbanColumn
+                      column={column}
+                      index={index}
+                      columnId={columnId}
+                    />
+                  </div>
+                ))}
+                {provided.placeholder}
+                <AddColumnBtn />
+              </ListGrid>
+            </>
           )}
         </Droppable>
-        <AddColumnBtn />
       </DragDropContext>
     </>
   );

@@ -1,5 +1,6 @@
 import { useRecoilState } from "recoil";
 import { columnsState } from "../store/kanban";
+import { AddColumnButton } from "../style/buttonStyle";
 export default function AddColumnBtn() {
   const [columns, setColumns] = useRecoilState(columnsState);
   const AddColumn = () => {
@@ -13,5 +14,7 @@ export default function AddColumnBtn() {
       ];
     });
   };
-  return <button onClick={AddColumn}>+ Add another list</button>;
+  return (
+    <AddColumnButton onClick={AddColumn}>+ Add another list</AddColumnButton>
+  );
 }

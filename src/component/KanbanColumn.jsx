@@ -6,17 +6,8 @@ import DeleteColumnBtn from "./DeleteColumnBtn";
 import { useRecoilState } from "recoil";
 import { columnsState } from "../store/kanban";
 import { deepCopy } from "../utils/object";
-import styled from "styled-components";
-
-const Container = styled.div`
-  margin: 8px;
-  border-radius: 2px;
-  border: 1px solid lightgrey;
-  display: flex;
-  flex-direction: column;
-  width: 230px;
-  background: white;
-`;
+import { Container, ItemsContainer, Title } from "../style/columnStyle";
+import { useEffect } from "react";
 
 export default function KanbanColumn({ column, index, columnId }) {
   const [columns, setColumns] = useRecoilState(columnsState);
@@ -29,6 +20,7 @@ export default function KanbanColumn({ column, index, columnId }) {
       alert("제목을 입력해주세요.");
     }
   };
+  console.log(column.items.length, "column");
   return (
     <Draggable
       draggableId={`${columnId} - ${index}`}
@@ -41,29 +33,38 @@ export default function KanbanColumn({ column, index, columnId }) {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <strong>
+          <Title>
             <ContentEditable
               html={column.title}
               disabled={false}
               onChange={handleChange}
             />
             <DeleteColumnBtn parentColumn={column} index={index} />
-          </strong>
-          <Droppable droppableId={`${index}`} index={index} type="task">
+          </Title>
+          <Droppable
+            droppableId={`${index}`}
+            index={index}
+            key={index}
+            type="task"
+          >
             {(provided) => (
               <>
-                <div ref={provided.innerRef} {...provided.droppableProps}>
-                  {column.items.map((item, idx) => (
-                    <div key={`${idx}-${item.id}`}>
-                      <KanbanItem
-                        item={item}
-                        columnIndex={index}
-                        itemIndex={idx}
-                      />
-                    </div>
-                  ))}
-                  {provided.placeholder}
-                </div>
+                <ItemsContainer
+                  className={column.items.length >= 5 ? "scrollContainer" : " "}
+                >
+                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                    {column.items.map((item, idx) => (
+                      <div key={`${idx}-${item.id}`}>
+                        <KanbanItem
+                          item={item}
+                          columnIndex={index}
+                          itemIndex={idx}
+                        />
+                      </div>
+                    ))}
+                    {provided.placeholder}
+                  </div>
+                </ItemsContainer>
               </>
             )}
           </Droppable>
