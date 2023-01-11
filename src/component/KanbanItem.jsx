@@ -21,6 +21,7 @@ export default function KanbanItem({ item, columnIndex, itemIndex }) {
         key={item.id}
         draggableId={`${item.content}`}
         index={itemIndex}
+        type="task"
       >
         {(provided, snapshot) => (
           <div
