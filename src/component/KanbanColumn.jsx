@@ -7,7 +7,6 @@ import { useRecoilState } from "recoil";
 import { columnsState } from "../store/kanban";
 import { deepCopy } from "../utils/object";
 import { Container, ItemsContainer, Title } from "../style/columnStyle";
-import { useEffect } from "react";
 
 export default function KanbanColumn({ column, index, columnId }) {
   const [columns, setColumns] = useRecoilState(columnsState);
@@ -20,7 +19,7 @@ export default function KanbanColumn({ column, index, columnId }) {
       alert("제목을 입력해주세요.");
     }
   };
-  console.log(column.items.length, "column");
+
   return (
     <Draggable
       draggableId={`${columnId} - ${index}`}
@@ -35,6 +34,7 @@ export default function KanbanColumn({ column, index, columnId }) {
         >
           <Title>
             <ContentEditable
+              style={{ width: "100px" }}
               html={column.title}
               disabled={false}
               onChange={handleChange}

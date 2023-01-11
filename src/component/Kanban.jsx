@@ -28,6 +28,7 @@ export default function Kanban() {
       setColumns(clone);
     }
   };
+
   return (
     <>
       <DragDropContext onDragEnd={onDragEnd}>
