@@ -1,8 +1,8 @@
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { columnsState } from "../store/kanban";
 import { AddColumnButton } from "../style/buttonStyle";
 export default function AddColumnBtn() {
-  const [columns, setColumns] = useRecoilState(columnsState);
+  const setColumns = useSetRecoilState(columnsState);
   const AddColumn = () => {
     setColumns((columns) => {
       return [
