@@ -1,14 +1,10 @@
 # 오류 및 에러 해결
 
-> Drag & Drop 기능 구현을 처음 해봤는데 구현 ui가 가장 비슷해보였던 react-beautiful-dnd를 선택했다. 컬럼을 이동시키기 위해서는 Drag & Drop이 중첩되어야 했는데 헷갈리지 않기 위해
-> 'type' 속성을 추가해서 구분했다.
+> - Drag & Drop 기능 구현을 처음 해봤는데 구현 ui가 가장 비슷해보였던 react-beautiful-dnd를 선택했다. 컬럼을 이동시키기 위해서는 Drag & Drop이 중첩되어야 했는데 헷갈리지 않기 위해
+>   'type' 속성을 추가해서 구분했다.
+> - 또한 , 셋팅하기 용이하고 사용방법이 useState와 비슷한 Recoil을 사용하였다.
 
 <br></br>
-
-![Untitled](https://user-images.githubusercontent.com/116490063/212016969-b1957021-5831-420c-add6-576c8998d1c8.png)
-
-- React strictmode에서 실행하게 되면 위와 같은 에러가 생겨 strict mode 삭제
-  <br></br>
 
 ![img2](https://user-images.githubusercontent.com/116490063/212017390-71cf99b0-ce18-430e-8a85-1ce79b1600b7.png)
 
@@ -19,7 +15,7 @@
 <br></br>
 ![칸반이미지](https://user-images.githubusercontent.com/116490063/212019753-4f38aaa8-9d2b-4867-8f63-2120835480f1.png)
 
-- 효율적인 UI 구현을 위해 Input태그로 구현한 것을 react-ContentEditable 라이브러리를 사용하였다. 단, useState를 사용해서 관리하는 것이 아닌 useRef를 사용해야 했다.
+- 효율적인 UI 구현을 위해 Input태그로 구현한 것을 react-ContentEditable 라이브러리를 사용하였다. 단, 가이드에 따라 useState를 사용해서 관리하는 것이 아닌 useRef를 사용해야 했다.
 
 <br></br>
 
@@ -31,6 +27,7 @@
 <br></br>
 
 - 내가 사용한 깊은복사 코드
+  > 일반적으로 obj에 함수가 들어가면 결과값이 제대로 안나올 수 있다. 그럴 경우에는 lodash를 사용해도 된다. 여기서도 사용할 수 있지만 배열을 넣는 경우이고 작은 프로젝트라 라이브러리를 사용하지 않고 하고싶었기 때문에 아래와 같은 방법을 사용했다.
 
 ```
 export const deepCopy = (obj) => {

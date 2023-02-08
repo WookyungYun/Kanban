@@ -9,8 +9,6 @@ import KanbanColumn from "./KanbanColumn";
 export default function Kanban() {
   const [columns, setColumns] = useRecoilState(columnsState);
 
-  console.log(columns, "columns");
-
   const onDragEnd = ({ destination, source, type }) => {
     if (!destination) return;
     if (type === "task") {
