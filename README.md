@@ -2,7 +2,9 @@
 
 ## **kanban 형태의 웹 어플리케이션**<br></br>
 
-![Front-end-기술과제-_-윤우경-Chrome-2023-01-11-19-01-27](https://user-images.githubusercontent.com/116490063/212026353-30856185-1486-4095-943c-7160336b446f.gif)
+
+<img src="https://user-images.githubusercontent.com/116490063/217549372-76ce1853-81cc-4c8c-8f5b-0afba7441d93.mp4">
+
 
 ## 👉 **실행방법**
 
