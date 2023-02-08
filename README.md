@@ -2,6 +2,8 @@
 
 ## **kanban 형태의 웹 어플리케이션**<br></br>
 
+<img src="https://user-images.githubusercontent.com/116490063/217549372-76ce1853-81cc-4c8c-8f5b-0afba7441d93.mp4">
+
 ## 👉 **실행방법**
 
 ```
